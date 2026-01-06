@@ -173,8 +173,8 @@ func (l *LogsConfigKeys) getMainAPIKey() (string, string) {
 	return l.getConfig().GetString(path), path
 }
 
-func (l *LogsConfigKeys) connectionResetInterval() time.Duration {
-	return time.Duration(l.getConfig().GetInt(l.getConfigKey("connection_reset_interval"))) * time.Second
+func (l *LogsConfigKeys) connectionResetInterval() int {
+	return l.getConfig().GetInt(l.getConfigKey("connection_reset_interval"))
 
 }
 

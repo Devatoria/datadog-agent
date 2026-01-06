@@ -866,7 +866,7 @@ func (suite *ConfigTestSuite) TestEndpointsSetNonDefaultCustomConfigs() {
 		RecoveryInterval:        5,
 		Version:                 EPIntakeVersion2,
 		TrackType:               "ndmflow",
-		ConnectionResetInterval: 3000000000,
+		ConnectionResetInterval: 3,
 		RecoveryReset:           true,
 		Protocol:                "test-proto",
 		Origin:                  "test-origin",

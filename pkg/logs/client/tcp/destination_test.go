@@ -144,7 +144,7 @@ func TestNoRetryAndWriteError(t *testing.T) {
 
 	// Connection resets prompted a panic on earlier code versions, make sure that wasn't reintroduced.
 	dest.connCreationTime = time.Now().Add(-2 * time.Second)
-	endpoint.ConnectionResetInterval = time.Second
+	endpoint.ConnectionResetInterval = 1
 
 	dest.sendAndRetry(message.NewPayload([]*message.MessageMetadata{}, []byte("test"), "source", 1), output, nil)
 	drops := metrics.DestinationLogsDropped.Get(endpoint.Host)

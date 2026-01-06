@@ -155,12 +155,14 @@ func newDestination(endpoint config.Endpoint,
 
 	workerPool := newDefaultWorkerPool(minConcurrency, maxConcurrency, destMeta)
 
+	connectionResetIntervalSeconds := time.Duration(endpoint.ConnectionResetInterval) * time.Second
+
 	return &Destination{
 		host:                endpoint.Host,
 		url:                 buildURL(endpoint),
 		endpoint:            endpoint,
 		contentType:         contentType,
-		client:              httputils.NewResetClient(endpoint.ConnectionResetInterval, httpClientFactory(cfg, timeoutOverride)),
+		client:              httputils.NewResetClient(connectionResetIntervalSeconds, httpClientFactory(cfg, timeoutOverride)),
 		destinationsContext: destinationsContext,
 		workerPool:          workerPool,
 		wg:                  sync.WaitGroup{},

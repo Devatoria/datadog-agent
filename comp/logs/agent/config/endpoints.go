@@ -65,7 +65,7 @@ type Endpoint struct {
 	CompressionLevel        int    `mapstructure:"compression_level" json:"compression_level"`
 	ProxyAddress            string
 	IsMRF                   bool `mapstructure:"-" json:"-"`
-	ConnectionResetInterval time.Duration
+	ConnectionResetInterval int
 
 	BackoffFactor    float64
 	BackoffBase      float64

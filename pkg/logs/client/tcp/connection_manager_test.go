@@ -75,7 +75,7 @@ func TestNewConnectionReturnsWhenContextCancelled(t *testing.T) {
 }
 
 func TestShouldReset(t *testing.T) {
-	endpoint := config.Endpoint{ConnectionResetInterval: time.Duration(10) * time.Second}
+	endpoint := config.Endpoint{ConnectionResetInterval: 10}
 	connManager := NewConnectionManager(endpoint, statusinterface.NewStatusProviderMock())
 
 	assert.False(t, connManager.ShouldReset(time.Now().Add(-time.Duration(5)*time.Second)))
