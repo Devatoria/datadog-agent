@@ -58,20 +58,20 @@ type Endpoint struct {
 	additionalEndpointsIdx int
 
 	Host                    string `mapstructure:"host" json:"host"`
-	Port                    int
+	Port                    int    `mapstructure:"port" json:"port"`
 	PathPrefix              string `mapstructure:"path_prefix" json:"path_prefix"`
 	UseCompression          bool   `mapstructure:"use_compression" json:"use_compression"`
 	CompressionKind         string `mapstructure:"compression_kind" json:"compression_kind"`
 	CompressionLevel        int    `mapstructure:"compression_level" json:"compression_level"`
-	ProxyAddress            string
-	IsMRF                   bool `mapstructure:"-" json:"-"`
-	ConnectionResetInterval int
+	ProxyAddress            string `mapstructure:"socks5_proxy_address" json:"socks5_proxy_address"`
+	IsMRF                   bool   `mapstructure:"-" json:"-"`
+	ConnectionResetInterval int    `mapstructure:"connection_reset_interval" json:"connection_reset_interval"`
 
-	BackoffFactor    float64
-	BackoffBase      float64
-	BackoffMax       float64
-	RecoveryInterval int
-	RecoveryReset    bool
+	BackoffFactor    float64 `mapstructure:"sender_backoff_factor" json:"sender_backoff_factor"`
+	BackoffBase      float64 `mapstructure:"sender_backoff_base" json:"sender_backoff_base"`
+	BackoffMax       float64 `mapstructure:"sender_backoff_max" json:"sender_backoff_max"`
+	RecoveryInterval int     `mapstructure:"sender_recovery_interval" json:"sender_recovery_interval"`
+	RecoveryReset    bool    `mapstructure:"sender_recovery_reset" json:"sender_recovery_reset"`
 
 	Version   EPIntakeVersion
 	TrackType IntakeTrackType
